@@ -1,0 +1,14 @@
+{
+  "ocaml@4.12.0@d41d8cd9":
+    "/home/onofre/.esy/source/i/ocaml__4.12.0__2b5694e6",
+  "ImageProcessing2@link-dev:./package.json":
+    "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2",
+  "@opam/dune@opam:2.9.0@489e77a9":
+    "/home/onofre/.esy/source/i/opam__s__dune__opam__c__2.9.0__f2432484",
+  "@opam/base-unix@opam:base@87d0b2eb":
+    "/home/onofre/.esy/source/i/opam__s__base_unix__opam__c__base__93427a57",
+  "@opam/base-threads@opam:base@36803084":
+    "/home/onofre/.esy/source/i/opam__s__base_threads__opam__c__base__f282958b",
+  "@esy-ocaml/substs@0.0.1@d41d8cd9":
+    "/home/onofre/.esy/source/i/esy_ocaml__s__substs__0.0.1__19de1ee1"
+}

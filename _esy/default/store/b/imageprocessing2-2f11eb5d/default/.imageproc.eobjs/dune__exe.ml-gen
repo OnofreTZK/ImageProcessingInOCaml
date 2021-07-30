@@ -1,0 +1,6 @@
+(** @canonical Dune__exe.Image *)
+module Image = Dune__exe__Image
+
+
+(** @canonical Dune__exe.Imageproc *)
+module Imageproc = Dune__exe__Imageproc
