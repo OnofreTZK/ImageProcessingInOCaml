@@ -6,3 +6,7 @@ lib: [
 bin: [
   "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/bin/imageproc.exe"
 ]
+doc: [
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/doc/imageproc/LICENSE"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/doc/imageproc/README.md"
+]
