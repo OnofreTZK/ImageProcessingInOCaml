@@ -1,0 +1,8 @@
+lib: [
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/lib/imageproc/META"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/lib/imageproc/dune-package"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/lib/imageproc/opam"
+]
+bin: [
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-2f11eb5d/install/default/bin/imageproc.exe"
+]

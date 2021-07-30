@@ -1,0 +1,9 @@
+{
+  "esy": {
+    "build": "dune build -p imageproc"
+  },
+  "dependencies": {
+    "ocaml": "4.12.x",
+    "@opam/dune": "*"
+  }
+}

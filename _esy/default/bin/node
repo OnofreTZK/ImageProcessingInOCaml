@@ -1,0 +1,4 @@
+#!/bin/sh
+export ESY__NODE_BIN_PATH="/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/bin"
+exec "/usr/bin/node" -r "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/pnp.js" "$@"
+              
