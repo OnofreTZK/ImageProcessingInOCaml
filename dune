@@ -1,0 +1,6 @@
+(executable
+  (name imageproc) 
+   (public_name imageproc.exe))
+(env
+  (dev
+    (flags (:standard -w -33))))
