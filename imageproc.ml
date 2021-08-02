@@ -8,5 +8,12 @@ let () = Printf.printf "%s\n" init_message
 let ppm_image_file_name = Array.get Sys.argv 1;;
 let () = Printf.printf "%s\n" ppm_image_file_name
 
+(** First Image test *)
+
+let init_image = Image.init;;
+
+let test_image = Image.read_image ppm_image_file_name init_image;;
+
+
 
 

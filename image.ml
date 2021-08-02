@@ -14,7 +14,7 @@ type image = {
   mutable body: pixel array array
 };;
 
-(** Empty image for tests purposes *)
+(** Empty image for test purposes *)
 let init = {
   id = "P3";
   row = 0;
@@ -29,10 +29,30 @@ let string_to_tuple str =
   let vetor = Array.of_list treate_str in
   (int_of_string (Array.get vetor 0), int_of_string (Array.get vetor 1));;
 
-(** Tuple to ints *)
-let tuple_to_ints (row_value, col_value) value_idx =
+(** Tuple to int *)
+let tuple_to_int (row_value, col_value) value_idx =
   if value_idx = 0 then row_value
   else col_value;;
+
+(** File to pixel list *)
+let file_to_list channel row_by_col =
+  let rec aux acc count =
+    if count = row_by_col then acc
+    else aux ({red = int_of_string (input_line channel); 
+               green = int_of_string (input_line channel); 
+               blue = int_of_string (input_line channel)} :: acc) (count+1) in
+  aux [] 0;;
+
+
+(** Filling pixel matrix *)
+let get_matrix_from_file row col ls =
+  let matrix = Array.make_matrix row col {red = 0; green = 0; blue = 0} in
+  let rec aux acc row_count col_count lista =
+      if row_count = row && col_count = col then acc
+      else if col_count = col then aux acc (row_count+1) 0 lista
+      else let () = acc.(row_count).(row_count) <- (List.hd lista) in 
+        aux acc row_count (col_count+1) (List.tl lista) in
+  aux matrix 0 0 ls;;
 
 (** Image parser *)
 let read_image file_name img =
@@ -40,11 +60,13 @@ let read_image file_name img =
   try  
     img.id <- input_line read_channel;
     let row_col_values = input_line read_channel in
-    img.row <- tuple_to_ints (string_to_tuple row_col_values) 0;
-    img.col <- tuple_to_ints (string_to_tuple row_col_values) 1;
+    img.row <- tuple_to_int (string_to_tuple row_col_values) 0;
+    img.col <- tuple_to_int (string_to_tuple row_col_values) 1;
     img.max_value <- int_of_string (input_line read_channel);
+    let matrix_list = file_to_list read_channel (img.row*img.col) in
+    img.body <- get_matrix_from_file img.row img.col matrix_list;
     flush stdout;
-    close_in read_channel
+    close_in read_channel;
   with err -> 
     close_in_noerr read_channel;
     raise err;
