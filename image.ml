@@ -48,10 +48,10 @@ let file_to_list channel row_by_col =
 let get_matrix_from_file row col ls =
   let matrix = Array.make_matrix row col {red = 0; green = 0; blue = 0} in
   let rec aux acc row_count col_count lista =
-      if row_count = row && col_count = col then acc
-      else if col_count = col then aux acc (row_count+1) 0 lista
-      else let () = acc.(row_count).(row_count) <- (List.hd lista) in 
-        aux acc row_count (col_count+1) (List.tl lista) in
+    if row_count = row then acc
+    else if col_count = col then aux acc (row_count+1) 0 lista
+    else let () = acc.(row_count).(row_count) <- (List.hd lista) in 
+      aux acc row_count (col_count+1) (List.tl lista) in
   aux matrix 0 0 ls;;
 
 (** Image parser *)
@@ -60,8 +60,8 @@ let read_image file_name img =
   try  
     img.id <- input_line read_channel;
     let row_col_values = input_line read_channel in
-    img.row <- tuple_to_int (string_to_tuple row_col_values) 0;
-    img.col <- tuple_to_int (string_to_tuple row_col_values) 1;
+    img.row <- tuple_to_int (string_to_tuple row_col_values) 1;
+    img.col <- tuple_to_int (string_to_tuple row_col_values) 0;
     img.max_value <- int_of_string (input_line read_channel);
     let matrix_list = file_to_list read_channel (img.row*img.col) in
     img.body <- get_matrix_from_file img.row img.col matrix_list;
