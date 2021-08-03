@@ -5,6 +5,7 @@ node_modules/
 _esy/
 /_esy
 /_build
+_build/
 /_release
 /_platformrelease
 /bin/fastreplacestring

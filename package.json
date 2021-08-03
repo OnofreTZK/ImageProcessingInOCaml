@@ -4,6 +4,15 @@
   },
   "dependencies": {
     "ocaml": "4.12.x",
-    "@opam/dune": "*"
+    "@opam/dune": "*",
+    "@opam/ounit2": "*",
+    "@opam/core": "*",
+    "@opam/ppx_jane": "*",
+    "@opam/ppx_expect": "*"
+  },
+
+  "devDependencies": {
+    "@opam/ocamlformat": "*",
+    "@opam/ocamlfind": "*"
   }
 }

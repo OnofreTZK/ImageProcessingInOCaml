@@ -1,6 +1,8 @@
 (executable
-  (name imageproc) 
-   (public_name imageproc.exe))
+  (name imageproc)
+  (libraries ounit2 core)
+  (preprocess (pps ppx_jane ppx_expect ppx_inline_test))
+  (public_name imageproc.exe))
 (env
   (dev
     (flags (:standard -w -33))))

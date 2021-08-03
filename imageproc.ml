@@ -9,10 +9,11 @@ let ppm_image_file_name = Array.get Sys.argv 1;;
 let () = Printf.printf "%s\n" ppm_image_file_name
 
 (** First Image test *)
+let test_image = Image.init;;
 
-let init_image = Image.init;;
+let () = Image.read_image ppm_image_file_name test_image;;
 
-let test_image = Image.read_image ppm_image_file_name init_image;;
+let () = Image.write_image test_image "test.ppm"
 
 
 
