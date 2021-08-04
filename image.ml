@@ -39,13 +39,13 @@ let tuple_to_int (row_value, col_value) value_idx =
   if value_idx = 0 then row_value
   else col_value;;
 
-(** File to pixel list *)
+(** File to pixel list TODO*)
 let file_to_list channel row_by_col =
   let rec aux acc count =
     if count = row_by_col then acc
-    else aux (({red = int_of_string (input_line channel); 
+    else aux ({red = int_of_string (input_line channel); 
                green = int_of_string (input_line channel); 
-               blue = int_of_string (input_line channel)}) :: acc) (count+1) in
+               blue = int_of_string (input_line channel)} :: acc) (count+1) in
   List.rev (aux [] 0);;
 
 (** Filling pixel matrix *)
