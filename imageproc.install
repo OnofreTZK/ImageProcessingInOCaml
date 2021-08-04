@@ -1,12 +1,12 @@
 lib: [
-  "/Users/onofret/Documents/personalprojects/ocamlStudies/ImageProcessingOcaml/_esy/default/store/b/imageprocessing2-dbc8e962/install/default/lib/imageproc/META"
-  "/Users/onofret/Documents/personalprojects/ocamlStudies/ImageProcessingOcaml/_esy/default/store/b/imageprocessing2-dbc8e962/install/default/lib/imageproc/dune-package"
-  "/Users/onofret/Documents/personalprojects/ocamlStudies/ImageProcessingOcaml/_esy/default/store/b/imageprocessing2-dbc8e962/install/default/lib/imageproc/opam"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-189d4874/install/default/lib/imageproc/META"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-189d4874/install/default/lib/imageproc/dune-package"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-189d4874/install/default/lib/imageproc/opam"
 ]
 bin: [
-  "/Users/onofret/Documents/personalprojects/ocamlStudies/ImageProcessingOcaml/_esy/default/store/b/imageprocessing2-dbc8e962/install/default/bin/imageproc.exe"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-189d4874/install/default/bin/imageproc.exe"
 ]
 doc: [
-  "/Users/onofret/Documents/personalprojects/ocamlStudies/ImageProcessingOcaml/_esy/default/store/b/imageprocessing2-dbc8e962/install/default/doc/imageproc/LICENSE"
-  "/Users/onofret/Documents/personalprojects/ocamlStudies/ImageProcessingOcaml/_esy/default/store/b/imageprocessing2-dbc8e962/install/default/doc/imageproc/README.md"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-189d4874/install/default/doc/imageproc/LICENSE"
+  "/home/onofre/PersonalProjects/studies/ocamlStudies/ImageProcessing2/_esy/default/store/b/imageprocessing2-189d4874/install/default/doc/imageproc/README.md"
 ]

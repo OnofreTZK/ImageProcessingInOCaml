@@ -11,9 +11,9 @@ let () = Printf.printf "%s\n" ppm_image_file_name
 (** First Image test *)
 let test_image = Image.init;;
 
-let () = Image.read_image ppm_image_file_name test_image;;
+let () = Image.read_image ~input_file: ppm_image_file_name ~img: test_image;;
 
-let () = Image.write_image test_image "test.ppm"
+let () = Image.write_image ~img: test_image ~output_file: "test.ppm"
 
 
 
