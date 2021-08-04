@@ -1,4 +1,4 @@
-
+(*TODO Rafactor to labeled parameters*)
 (** Defining Pixel*)
 type pixel = { 
   mutable red : int;
@@ -49,7 +49,7 @@ let file_to_list channel row_by_col =
   List.rev (aux [] 0);;
 
 (** Filling pixel matrix *)
-let get_matrix_from_file row col ls =
+let get_matrix_from_file row col ls = 
   let matrix = Array.make_matrix row col {red = 0; green = 0; blue = 0} in
   let rec aux acc row_count col_count lista =
     if row_count = row then acc
@@ -78,8 +78,10 @@ let read_image file_name img =
 (*************************************************************************************************)
 
 (** Write pixel *)
-let write_pixel channel pixel =
-  Printf.fprintf channel "%d\n%d\n%d\n" pixel.red pixel.green pixel.blue;;
+let write_pixel ~ch:channel ~px:pixel =
+    Printf.fprintf channel "%d\n" pixel.red; 
+    Printf.fprintf channel "%d\n" pixel.green;
+    Printf.fprintf channel "%d\n" pixel.blue;;
 
 
 (** Write matrix *)
@@ -87,7 +89,7 @@ let write_matrix channel matrix row col =
   let rec aux row_count col_count =
     if row_count = row then ()
     else if col_count = col then aux (row_count+1) 0
-    else let () = write_pixel channel matrix.(row_count).(col_count) in
+    else let () = write_pixel ~ch:channel ~px:(matrix.(row_count).(col_count)) in
          aux row_count (col_count+1) in
   aux 0 0;;
 
