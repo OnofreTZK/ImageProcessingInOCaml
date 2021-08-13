@@ -15,7 +15,7 @@ let print_menu =
   Printf.printf "$ 'rot'\t->\tRotate image\n"; 
   Printf.printf "$ 'grw'\t->\tGrown image\n"; 
   Printf.printf "$ 'red'\t->\tReduce image\n";
-  Printf.printf "$ 'ext'\t->\tExit\n"
+  Printf.printf "$ 'ext'\t->\tExit\n%!"
 ;;
 
 (* Entries *)
@@ -52,8 +52,8 @@ let parse_entry = function
 ;;
 
 (* Function to control menu loop *)
-let init =
-  print_menu; 
+let init_menu =
+  let () = print_menu in
   let ch = Scanning.stdin in
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
