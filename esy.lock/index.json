@@ -1,6 +1,6 @@
 {
-  "checksum": "55e35dcdcfba0d888acb4a5fefa4b321",
-  "root": "ImageProcessing2@link-dev:./package.json",
+  "checksum": "7094ea5581331eeff38a72366dcf224b",
+  "root": "ImageProcessingOcaml@link-dev:./package.json",
   "node": {
     "ocaml@4.12.0@d41d8cd9": {
       "id": "ocaml@4.12.0@d41d8cd9",
@@ -16,9 +16,9 @@
       "dependencies": [],
       "devDependencies": []
     },
-    "ImageProcessing2@link-dev:./package.json": {
-      "id": "ImageProcessing2@link-dev:./package.json",
-      "name": "ImageProcessing2",
+    "ImageProcessingOcaml@link-dev:./package.json": {
+      "id": "ImageProcessingOcaml@link-dev:./package.json",
+      "name": "ImageProcessingOcaml",
       "version": "link-dev:./package.json",
       "source": {
         "type": "link-dev",
@@ -27,10 +27,8 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@4.12.0@d41d8cd9", "@opam/ppx_jane@opam:v0.14.0@cb0eefaa",
-        "@opam/ppx_expect@opam:v0.14.1@72b3b5e4",
-        "@opam/ounit2@opam:2.2.4@1877225e", "@opam/dune@opam:2.9.0@489e77a9",
-        "@opam/core@opam:v0.14.1@2e486eb2"
+        "ocaml@4.12.0@d41d8cd9", "@opam/ounit2@opam:2.2.4@1877225e",
+        "@opam/dune@opam:2.9.0@489e77a9", "@opam/core@opam:v0.14.1@2e486eb2"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.19.0@25e59922",
@@ -543,7 +541,7 @@
         "ocaml@4.12.0@d41d8cd9", "@opam/stdlib-shims@opam:0.3.0@0d088929",
         "@opam/sexplib0@opam:v0.14.0@155c136c",
         "@opam/ppx_derivers@opam:1.2.1@ecf0aa45",
-        "@opam/ocaml-migrate-parsetree@opam:2.2.0@d1434b92",
+        "@opam/ocaml-migrate-parsetree@opam:2.2.0@253436e0",
         "@opam/ocaml-compiler-libs@opam:v0.12.3@316a19dc",
         "@opam/dune@opam:2.9.0@489e77a9", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
@@ -551,7 +549,7 @@
         "ocaml@4.12.0@d41d8cd9", "@opam/stdlib-shims@opam:0.3.0@0d088929",
         "@opam/sexplib0@opam:v0.14.0@155c136c",
         "@opam/ppx_derivers@opam:1.2.1@ecf0aa45",
-        "@opam/ocaml-migrate-parsetree@opam:2.2.0@d1434b92",
+        "@opam/ocaml-migrate-parsetree@opam:2.2.0@253436e0",
         "@opam/ocaml-compiler-libs@opam:v0.12.3@316a19dc",
         "@opam/dune@opam:2.9.0@489e77a9"
       ]
@@ -1699,8 +1697,8 @@
       ],
       "devDependencies": [ "ocaml@4.12.0@d41d8cd9" ]
     },
-    "@opam/ocaml-migrate-parsetree@opam:2.2.0@d1434b92": {
-      "id": "@opam/ocaml-migrate-parsetree@opam:2.2.0@d1434b92",
+    "@opam/ocaml-migrate-parsetree@opam:2.2.0@253436e0": {
+      "id": "@opam/ocaml-migrate-parsetree@opam:2.2.0@253436e0",
       "name": "@opam/ocaml-migrate-parsetree",
       "version": "opam:2.2.0",
       "source": {
