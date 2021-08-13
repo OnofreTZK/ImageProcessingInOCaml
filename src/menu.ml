@@ -2,8 +2,22 @@ open Image
 open Parameters
 open Scanf
 
-(* Print menu *)
+(* Menu String*)
 let print_menu = 
+  "Choose the process:\n" ^
+  "$ 'gry'\t->\tGray scale\n" ^
+  "$ 'thr'\t->\tThresholding binarization\n" ^
+  "$ 'brd'\t->\tBorder detector\n" ^
+  "$ 'sbl'\t->\tSobel border detector\n" ^
+  "$ 'blu'\t->\tBlurring\n" ^
+  "$ 'gss'\t->\tGauss Blurring\n" ^
+  "$ 'sha'\t->\tSharpening\n" ^
+  "$ 'rot'\t->\tRotate image\n" ^ 
+  "$ 'grw'\t->\tGrown image\n" ^
+  "$ 'red'\t->\tReduce image\n" ^
+  "$ 'ext'\t->\tExit\n"
+;;
+(*let print_menu = 
   Printf.printf "Choose the process:\n";
   Printf.printf "$ 'gry'\t->\tGray scale\n";
   Printf.printf "$ 'thr'\t->\tThresholding binarization\n";
@@ -16,7 +30,7 @@ let print_menu =
   Printf.printf "$ 'grw'\t->\tGrown image\n"; 
   Printf.printf "$ 'red'\t->\tReduce image\n";
   Printf.printf "$ 'ext'\t->\tExit\n%!"
-;;
+;;*)
 
 (* Entries *)
 let cmd_to_entry = function
@@ -53,7 +67,7 @@ let parse_entry = function
 
 (* Function to control menu loop *)
 let init_menu =
-  let () = print_menu in
+  (*let () = Printf.printf "%s\n%!" print_menu in*)
   let ch = Scanning.stdin in
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
