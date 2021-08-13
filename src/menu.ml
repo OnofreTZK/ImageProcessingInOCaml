@@ -31,7 +31,7 @@ let cmd_to_entry = function
   | "grw" -> Grown
   | "red" -> Reduce
   | "ext" -> Exit
-  | invalid_cmd -> Void
+  | _ -> Void
 ;;
 
 
@@ -52,13 +52,13 @@ let parse_entry = function
 ;;
 
 (* Function to control menu loop *)
-let init img =
-  let () = print_menu;
+let init =
+  print_menu; 
   let ch = Scanning.stdin in
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
     else if cmd = Exit then loop false cmd (* Finish program *)
     else if cmd = Void then loop true (Scanf.bscanf ch "%s" cmd_to_entry) (*void enter*)
-    else let () = parse_entry cmd in loop true (Scanf.bscanf ch "%s" cmd_to_entry) in
+    else loop true (Scanf.bscanf ch "%s" cmd_to_entry) in
   loop true (Scanf.bscanf ch "%s" cmd_to_entry)
 ;;

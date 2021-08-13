@@ -21,6 +21,6 @@ let () = Image.write_image ~img: test_image ~output_file: "test.ppm";;
 
 
 (*TODO Implement menu*)
-let () = Menu.print_menu;; 
+let () = Menu.init;; 
 
 
