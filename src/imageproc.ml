@@ -1,6 +1,4 @@
 
-(* Veryfing argument *)
-
 (* Initial message *)
 let print_init = Printf.printf ">>> Initializing Image Processing\n%!";;
 
@@ -16,7 +14,10 @@ let image = Image.read_image ~input_file: ppm_image ~img: Image.init;;
 
 (* Menu *)
 let init =
-  if Array.length Sys.argv < 2 then Printf.printf ">>> Please, give a ppm image as an argument!\n%!" |> exit 0
-  else print_init;
-  print_input_image;
-    Menu.init_menu;;
+  print_init |>
+  fun _ -> print_input_image |>
+  fun _ -> Menu.init_menu;;
+
+(* Veryfing argument *)
+let () = if Array.length Sys.argv < 2 then Printf.printf ">>> Please, give a ppm image as an argument!\n%!" |> exit 0
+    else init;;
