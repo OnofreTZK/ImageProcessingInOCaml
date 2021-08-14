@@ -1,4 +1,3 @@
-open Image
 open Parameters
 open Scanf
 
@@ -17,20 +16,6 @@ let print_menu =
   "$ 'red'\t->\tReduce image\n" ^
   "$ 'ext'\t->\tExit\n"
 ;;
-(*let print_menu = 
-  Printf.printf "Choose the process:\n";
-  Printf.printf "$ 'gry'\t->\tGray scale\n";
-  Printf.printf "$ 'thr'\t->\tThresholding binarization\n";
-  Printf.printf "$ 'brd'\t->\tBorder detector\n";
-  Printf.printf "$ 'sbl'\t->\tSobel border detector\n";
-  Printf.printf "$ 'blu'\t->\tBlurring\n";
-  Printf.printf "$ 'gss'\t->\tGauss Blurring\n";
-  Printf.printf "$ 'sha'\t->\tSharpening\n";
-  Printf.printf "$ 'rot'\t->\tRotate image\n"; 
-  Printf.printf "$ 'grw'\t->\tGrown image\n"; 
-  Printf.printf "$ 'red'\t->\tReduce image\n";
-  Printf.printf "$ 'ext'\t->\tExit\n%!"
-;;*)
 
 (* Entries *)
 let cmd_to_entry = function
