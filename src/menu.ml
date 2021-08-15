@@ -52,7 +52,7 @@ let parse_entry = function
 
 (* Function to control menu loop *)
 let init_menu =
-  (*let () = Printf.printf "%s\n%!" print_menu in*)
+  let () = Printf.printf "%s\n%!" print_menu in
   let ch = Scanning.stdin in
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
