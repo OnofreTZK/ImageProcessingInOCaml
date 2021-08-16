@@ -17,7 +17,7 @@ let verify_args = (Array.length Sys.argv) < 2;;
 let init validator =
   match validator with
     | true -> Printf.printf ">>> Please, give a ppm image as an argument!\n%!" |> exit 0
-    | false -> print_init |> fun () -> Menu.init_menu
+    | false -> print_init |> fun () -> Printf.printf "Test\n"(*fun () -> Menu.init_menu*)
 ;;
 
 let () = init verify_args;;

@@ -14,6 +14,7 @@ let print_menu =
   "$ 'rot'\t->\tRotate image\n" ^ 
   "$ 'grw'\t->\tGrown image\n" ^
   "$ 'red'\t->\tReduce image\n" ^
+  "$ 'h'\t->\tPrint this menu again\n" ^
   "$ 'ext'\t->\tExit\n"
 ;;
 
@@ -30,6 +31,7 @@ let cmd_to_entry = function
   | "grw" -> Grown
   | "red" -> Reduce
   | "ext" -> Exit
+  | "h" -> Help
   | _ -> Void
 ;;
 
@@ -47,17 +49,20 @@ let parse_entry = function
   | Grown -> Printf.printf "Grown Image!\n"
   | Reduce -> Printf.printf "Reduce Image!\n"
   | Exit -> Printf.printf "Exiting...\n"
+  | Help -> Printf.printf "%s\n" print_menu
   | Void -> Printf.printf "\n"
 ;;
 
 (* Function to control menu loop *)
+(* TODO refactor to eliminate all the boilerplate *)
 let init_menu =
-  let () = Printf.printf "%s\n%!" print_menu in
+  Printf.printf "%s\n" print_menu;
   let ch = Scanning.stdin in
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
     else if cmd = Exit then loop false cmd (* Finish program *)
     else if cmd = Void then loop true (Scanf.bscanf ch "%s" cmd_to_entry) (*void enter*)
-    else loop true (Scanf.bscanf ch "%s" cmd_to_entry) in
+    else if cmd = Help then Printf.printf "%s\n" print_menu |> fun () -> loop true (Scanf.bscanf ch "%s" cmd_to_entry)
+    else parse_entry cmd |> fun () -> loop true (Scanf.bscanf ch "%s" cmd_to_entry) in
   loop true (Scanf.bscanf ch "%s" cmd_to_entry)
 ;;

@@ -10,4 +10,5 @@ type entries =
   | Grown
   | Reduce
   | Exit
+  | Help
   | Void
