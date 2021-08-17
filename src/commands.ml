@@ -1,23 +1,6 @@
 open Parameters
 open Scanf
 
-(* Menu String*)
-let print_menu = 
-  "Choose the process:\n" ^
-  "$ 'gry'\t->\tGray scale\n" ^
-  "$ 'thr'\t->\tThresholding binarization\n" ^
-  "$ 'brd'\t->\tBorder detector\n" ^
-  "$ 'sbl'\t->\tSobel border detector\n" ^
-  "$ 'blu'\t->\tBlurring\n" ^
-  "$ 'gss'\t->\tGauss Blurring\n" ^
-  "$ 'sha'\t->\tSharpening\n" ^
-  "$ 'rot'\t->\tRotate image\n" ^ 
-  "$ 'grw'\t->\tGrown image\n" ^
-  "$ 'red'\t->\tReduce image\n" ^
-  "$ 'h'\t->\tPrint this menu again\n" ^
-  "$ 'ext'\t->\tExit\n"
-;;
-
 (* Entries *)
 let cmd_to_entry = function
   | "gry" -> Gray 
@@ -49,20 +32,18 @@ let parse_entry = function
   | Grown -> Printf.printf "Grown Image!\n"
   | Reduce -> Printf.printf "Reduce Image!\n"
   | Exit -> Printf.printf "Exiting...\n"
-  | Help -> Printf.printf "%s\n" print_menu
+  | Help -> Printf.printf "%s\n" Parameters.str_menu
   | Void -> Printf.printf "\n"
 ;;
 
 (* Function to control menu loop *)
 (* TODO refactor to eliminate all the boilerplate *)
-let init_menu =
-  Printf.printf "%s\n" print_menu;
+let init_cmd_control = 
   let ch = Scanning.stdin in
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
     else if cmd = Exit then loop false cmd (* Finish program *)
     else if cmd = Void then loop true (Scanf.bscanf ch "%s" cmd_to_entry) (*void enter*)
-    else if cmd = Help then Printf.printf "%s\n" print_menu |> fun () -> loop true (Scanf.bscanf ch "%s" cmd_to_entry)
     else parse_entry cmd |> fun () -> loop true (Scanf.bscanf ch "%s" cmd_to_entry) in
   loop true (Scanf.bscanf ch "%s" cmd_to_entry)
 ;;
