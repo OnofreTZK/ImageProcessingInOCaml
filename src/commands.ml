@@ -38,12 +38,11 @@ let parse_entry = function
 
 (* Function to control menu loop *)
 (* TODO refactor to eliminate all the boilerplate *)
-let init_cmd_control = 
-  let ch = Scanning.stdin in
+(*let init_cmd_control = 
   let rec loop is_active cmd = 
     if not is_active then Printf.printf "Closing program...\n" (* Finishing program *)
     else if cmd = Exit then loop false cmd (* Finish program *)
-    else if cmd = Void then loop true (Scanf.bscanf ch "%s" cmd_to_entry) (*void enter*)
-    else parse_entry cmd |> fun () -> loop true (Scanf.bscanf ch "%s" cmd_to_entry) in
-  loop true (Scanf.bscanf ch "%s" cmd_to_entry)
-;;
+    else if cmd = Void then loop true (Scanf.scanf "%s\n" cmd_to_entry) (*void enter*)
+    else parse_entry cmd |> fun () -> loop true (Scanf.scanf "%s\n" cmd_to_entry) in
+  loop true (Scanf.scanf "%s\n" cmd_to_entry)
+;;*)
