@@ -31,9 +31,9 @@ let parse_entry = function
   | Rotate -> Printf.printf "Rotate Image!\n"
   | Grown -> Printf.printf "Grown Image!\n"
   | Reduce -> Printf.printf "Reduce Image!\n"
-  | Exit -> Printf.printf "Exiting...\n"
+  | Exit -> ()
   | Help -> Printf.printf "%s\n" Parameters.str_menu
-  | Void -> Printf.printf "\n"
+  | Void -> Printf.printf "Argumento inválido!\n"
 ;;
 
 (* Function to control menu loop *)
