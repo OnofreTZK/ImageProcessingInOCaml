@@ -1,6 +1,4 @@
-type pixel
-
-type image
+open Types
 
 val init : image
 
