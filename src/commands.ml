@@ -30,7 +30,8 @@ let parse_entry img = function
   | Sobel -> Printf.printf "Border Detection with Sobel!\n"
   | Blurring -> Printf.printf "Blurring!\n"
   | Gauss -> Printf.printf "Blurring with Gauss!\n"
-  | Sharpening -> Printf.printf "Sharpening!\n"
+  | Sharpening -> Filters.sharpening img |>
+                  fun () -> Image.write_image ~img: img ~output_file: "sharp.ppm"
   | Rotate -> Printf.printf "Rotate Image!\n"
   | Grown -> Printf.printf "Grown Image!\n"
   | Reduce -> Printf.printf "Reduce Image!\n"

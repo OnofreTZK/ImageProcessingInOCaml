@@ -50,3 +50,55 @@ let threshold img =
 ;;
 (**************************************************************************************************)
 
+
+
+(* Mask Filter Functions *)
+(**************************************************************************************************)
+let apply_mask ~img ~mask ~curr_row ~curr_col =
+  let rec aux (r, g, b) row col =
+    if row = 3 then (r, g, b)
+    else if col = 3 then aux (r, g, b) (row+1) 0
+    (* Conditions to avoid elements out of range *)
+    else if (curr_row+row-1) = -1 || (curr_col+col-1) = -1 || (curr_row+row-1) = img.row || (curr_col+col-1) = img.col
+         then aux (r, g, b) row (col+1)
+    (* Imperative like?? *)
+    else aux (r + (img.body.(curr_row-1+row).(curr_col-1+col).red*mask.(row).(col)),
+              g + (img.body.(curr_row-1+row).(curr_col-1+col).green*mask.(row).(col)), 
+               b + (img.body.(curr_row-1+row).(curr_col-1+col).blue*mask.(row).(col))) row (col+1)
+  in
+  aux (0, 0, 0) 0 0
+;;
+
+
+let filter mask img =
+  let fix_color_value color =
+    if color < 0 then 0
+    else if color > img.max_value then img.max_value
+    else color
+  in
+  let fill_px row col (r, g, b) =
+    img.body.(row).(col).red <- (fix_color_value r);
+    img.body.(row).(col).green <- (fix_color_value g);
+    img.body.(row).(col).blue <- (fix_color_value b);
+    ()
+  in
+  let rec aux row col =
+    if row = img.row then ()
+    else if col = img.col then aux (row+1) 0
+    else fill_px row col (apply_mask ~img ~mask ~curr_row:row ~curr_col:col) |> fun () -> aux row (col+1) 
+  in
+  aux 0 0
+;;
+
+(**************************************************************************************************)
+
+(* Sharpening Proccess *)
+(**************************************************************************************************)
+let sharpening img =
+  let mask = [| [|0; -1; 0 |]; 
+                [|-1; 5; -1|];
+                [|0; -1; 0 |] |]
+  in
+  filter mask img
+;;
+(**************************************************************************************************)
