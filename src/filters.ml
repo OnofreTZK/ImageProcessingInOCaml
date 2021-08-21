@@ -84,6 +84,21 @@ let apply_mask_blur ~img ~mask ~curr_row ~curr_col =
   aux (0, 0, 0) 0 0
 ;;
 
+let apply_mask_gauss ~img ~mask ~curr_row ~curr_col =
+  let rec aux (r, g, b) row col =
+    if row = 5 then (r, g, b)
+    else if col = 5 then aux (r, g, b) (row+1) 0
+    (* Conditions to avoid elements out of range *)
+    else if (curr_row+row-2) < 0 || (curr_col+col-2) < 0 || (curr_row+row-2) >= img.row || (curr_col+col-2) >= img.col
+         then aux (r, g, b) row (col+1)
+    (* Imperative like?? *)
+    else aux (r + (img.body.(curr_row-2+row).(curr_col-2+col).red*mask.(row).(col))/256,
+              g + (img.body.(curr_row-2+row).(curr_col-2+col).green*mask.(row).(col))/256, 
+               b + (img.body.(curr_row-2+row).(curr_col-2+col).blue*mask.(row).(col))/256) row (col+1)
+  in
+  aux (0, 0, 0) 0 0
+;;
+
 let filter mask img f =
   let fix_color_value color =
     if color < 0 then 0
@@ -125,5 +140,29 @@ let sharpening img =
                 [|0; -1; 0 |] |]
   in
   filter mask img apply_mask_default
+;;
+(**************************************************************************************************)
+
+(* Bordering Proccess *)
+(**************************************************************************************************)
+let bordering img =
+  let mask = [| [|-1; -1; -1|]; 
+                [|-1; 8; -1 |];
+                [|-1; -1; -1|] |]
+  in
+  filter mask img apply_mask_default
+;;
+(**************************************************************************************************)
+
+(* Gauss Proccess *)
+(**************************************************************************************************)
+let gauss img =
+  let mask = [| [|1; 4; 6; 4; 1   |]; 
+                [|4; 16; 24; 16; 4|];
+                [|6; 24; 36; 14; 6|];
+                [|4; 16; 24; 16; 4|];
+                [|1; 4; 6; 4; 1   |] |]
+  in
+  filter mask img apply_mask_gauss
 ;;
 (**************************************************************************************************)

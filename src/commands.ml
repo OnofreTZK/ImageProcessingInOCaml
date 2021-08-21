@@ -21,16 +21,20 @@ let cmd_to_entry = function
 
 (* Proccess selection *)
 let parse_entry img = function
-  | Gray -> Filters.gray_scale img |> 
+  | Gray -> Filters.gray_scale img |>
             fun () -> Image.write_image ~img: img ~output_file: "gray.ppm"
   | Thresholding -> Filters.gray_scale img |> 
                     fun () -> Filters.threshold img |>
                     fun () -> Image.write_image ~img: img ~output_file: "threshold.ppm"
-  | Borders -> Printf.printf "Border Detection!\n"
+  | Borders -> Filters.gray_scale img |> 
+                    fun () -> Filters.threshold img |>
+                    fun () -> Filters.bordering img |>
+                    fun () -> Image.write_image ~img: img ~output_file: "border.ppm"
   | Sobel -> Printf.printf "Border Detection with Sobel!\n"
   | Blurring -> Filters.blurring img |>
                 fun () -> Image.write_image ~img: img ~output_file: "blur.ppm"
-  | Gauss -> Printf.printf "Blurring with Gauss!\n"
+  | Gauss -> Filters.gauss img |>
+                fun () -> Image.write_image ~img: img ~output_file: "gauss.ppm"
   | Sharpening -> Filters.sharpening img |>
                   fun () -> Image.write_image ~img: img ~output_file: "sharp.ppm"
   | Rotate -> Printf.printf "Rotate Image!\n"
