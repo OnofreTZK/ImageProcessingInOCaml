@@ -28,7 +28,8 @@ let parse_entry img = function
                     fun () -> Image.write_image ~img: img ~output_file: "threshold.ppm"
   | Borders -> Printf.printf "Border Detection!\n"
   | Sobel -> Printf.printf "Border Detection with Sobel!\n"
-  | Blurring -> Printf.printf "Blurring!\n"
+  | Blurring -> Filters.blurring img |>
+                fun () -> Image.write_image ~img: img ~output_file: "blur.ppm"
   | Gauss -> Printf.printf "Blurring with Gauss!\n"
   | Sharpening -> Filters.sharpening img |>
                   fun () -> Image.write_image ~img: img ~output_file: "sharp.ppm"

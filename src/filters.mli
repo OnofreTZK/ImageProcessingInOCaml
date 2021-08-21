@@ -17,9 +17,14 @@ val binarization : int -> int -> pixel -> unit
 val threshold : image -> unit
 
 (* Mask Filter *)
-val apply_mask : img:image -> mask:int array array -> curr_row:int -> curr_col:int -> len:int -> (int * int * int)
+val apply_mask_blur : img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)
+val apply_mask_default : img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)
 
-val filter : int array array -> image -> int -> unit
+val filter : int array array -> image -> 
+  (img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)) -> unit
 
-(* Sharpening Images *)
+(* Blurring *)
+val blurring : image -> unit
+
+(* Sharpening *)
 val sharpening : image -> unit

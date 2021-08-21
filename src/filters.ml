@@ -54,10 +54,10 @@ let threshold img =
 
 (* Mask Filter Functions *)
 (**************************************************************************************************)
-let apply_mask ~img ~mask ~curr_row ~curr_col ~len =
+let apply_mask_default ~img ~mask ~curr_row ~curr_col =
   let rec aux (r, g, b) row col =
-    if row = len then (r, g, b)
-    else if col = len then aux (r, g, b) (row+1) 0
+    if row = 3 then (r, g, b)
+    else if col = 3 then aux (r, g, b) (row+1) 0
     (* Conditions to avoid elements out of range *)
     else if (curr_row+row-1) = -1 || (curr_col+col-1) = -1 || (curr_row+row-1) = img.row || (curr_col+col-1) = img.col
          then aux (r, g, b) row (col+1)
@@ -69,8 +69,22 @@ let apply_mask ~img ~mask ~curr_row ~curr_col ~len =
   aux (0, 0, 0) 0 0
 ;;
 
+let apply_mask_blur ~img ~mask ~curr_row ~curr_col =
+  let rec aux (r, g, b) row col =
+    if row = 3 then (r, g, b)
+    else if col = 3 then aux (r, g, b) (row+1) 0
+    (* Conditions to avoid elements out of range *)
+    else if (curr_row+row-1) = -1 || (curr_col+col-1) = -1 || (curr_row+row-1) = img.row || (curr_col+col-1) = img.col
+         then aux (r, g, b) row (col+1)
+    (* Imperative like?? *)
+    else aux (r + (img.body.(curr_row-1+row).(curr_col-1+col).red*mask.(row).(col))/9,
+              g + (img.body.(curr_row-1+row).(curr_col-1+col).green*mask.(row).(col))/9, 
+               b + (img.body.(curr_row-1+row).(curr_col-1+col).blue*mask.(row).(col))/9) row (col+1)
+  in
+  aux (0, 0, 0) 0 0
+;;
 
-let filter mask img len =
+let filter mask img f =
   let fix_color_value color =
     if color < 0 then 0
     else if color > img.max_value then img.max_value
@@ -85,11 +99,22 @@ let filter mask img len =
   let rec aux row col =
     if row = img.row then ()
     else if col = img.col then aux (row+1) 0
-    else fill_px row col (apply_mask ~img ~mask ~curr_row:row ~curr_col:col ~len) |> fun () -> aux row (col+1) 
+    else fill_px row col (f ~img ~mask ~curr_row:row ~curr_col:col) |> fun () -> aux row (col+1) 
   in
   aux 0 0
 ;;
 
+(**************************************************************************************************)
+
+(* Blurring Proccess *)
+(**************************************************************************************************)
+let blurring img =
+  let mask = [| [|1; 1; 1 |]; 
+                [|1; 1; 1 |];
+                [|1; 1; 1 |] |]
+  in
+  filter mask img apply_mask_blur
+;;
 (**************************************************************************************************)
 
 (* Sharpening Proccess *)
@@ -99,6 +124,6 @@ let sharpening img =
                 [|-1; 5; -1|];
                 [|0; -1; 0 |] |]
   in
-  filter mask img (Array.length mask)
+  filter mask img apply_mask_default
 ;;
 (**************************************************************************************************)
