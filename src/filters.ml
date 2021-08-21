@@ -54,10 +54,10 @@ let threshold img =
 
 (* Mask Filter Functions *)
 (**************************************************************************************************)
-let apply_mask ~img ~mask ~curr_row ~curr_col =
+let apply_mask ~img ~mask ~curr_row ~curr_col ~len =
   let rec aux (r, g, b) row col =
-    if row = 3 then (r, g, b)
-    else if col = 3 then aux (r, g, b) (row+1) 0
+    if row = len then (r, g, b)
+    else if col = len then aux (r, g, b) (row+1) 0
     (* Conditions to avoid elements out of range *)
     else if (curr_row+row-1) = -1 || (curr_col+col-1) = -1 || (curr_row+row-1) = img.row || (curr_col+col-1) = img.col
          then aux (r, g, b) row (col+1)
@@ -70,7 +70,7 @@ let apply_mask ~img ~mask ~curr_row ~curr_col =
 ;;
 
 
-let filter mask img =
+let filter mask img len =
   let fix_color_value color =
     if color < 0 then 0
     else if color > img.max_value then img.max_value
@@ -85,7 +85,7 @@ let filter mask img =
   let rec aux row col =
     if row = img.row then ()
     else if col = img.col then aux (row+1) 0
-    else fill_px row col (apply_mask ~img ~mask ~curr_row:row ~curr_col:col) |> fun () -> aux row (col+1) 
+    else fill_px row col (apply_mask ~img ~mask ~curr_row:row ~curr_col:col ~len) |> fun () -> aux row (col+1) 
   in
   aux 0 0
 ;;
@@ -99,6 +99,6 @@ let sharpening img =
                 [|-1; 5; -1|];
                 [|0; -1; 0 |] |]
   in
-  filter mask img
+  filter mask img (Array.length mask)
 ;;
 (**************************************************************************************************)
