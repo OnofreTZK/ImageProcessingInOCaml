@@ -1,4 +1,5 @@
 open Types
+open Kernel
 
 (* Gray Scale *)
 val pixel_mean : pixel -> int
@@ -17,11 +18,7 @@ val binarization : int -> int -> pixel -> unit
 val threshold : image -> unit
 
 (* Mask Filter *)
-val apply_mask_default : img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)
-val apply_mask_blur : img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)
-val apply_mask_gauss : img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)
-
-val filter : int array array -> image -> 
+val filter : int array array -> image ->
   (img:image -> mask:int array array -> curr_row:int -> curr_col:int -> (int * int * int)) -> unit
 
 (* Blurring *)
