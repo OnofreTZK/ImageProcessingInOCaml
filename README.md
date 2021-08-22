@@ -36,7 +36,7 @@ $ esy
 $ esy dune exec imageproc.exe <ppm_file>
 ```
 
-### Referências que auxiliaram no desenvolvimento
+### Refs
 * [Artigo no Wikipedia - Kernel](https://en.wikipedia.org/wiki/Kernel_(image_processing))
 * [Artigo no Wikipedia - Operador de Sobel](https://en.wikipedia.org/wiki/Sobel_operator)
 * [Computerphile - Filters](https://www.youtube.com/watch?v=C_zFhWdM4ic)
