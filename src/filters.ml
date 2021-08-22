@@ -122,3 +122,51 @@ let gauss img =
   filter mask img Gauss.apply
 ;;
 (**************************************************************************************************)
+
+(* Sobel Proccess *)
+(**************************************************************************************************)
+let vertical_horizontal_kernel ~img ~curr_row ~curr_col =
+  let sobel_x = [|[|-1; 0; 1|];
+                  [|-2; 0; 2|];
+                  [|-1; 0; 1|]|]
+  in
+  let sobel_y = [|[|-1; -2; -1|];
+                  [|0;   0;  0|];
+                  [|1;   2;  1|]|]
+  in
+  let rec aux (x, y) row col =
+    if row = 3 then (x, y)
+    else if col = 3 then aux (x, y) (row+1) 0
+    (* Conditions to avoid elements out of range *)
+    else if (curr_row+row-1) = -1 || (curr_col+col-1) = -1 || (curr_row+row-1) = img.row || (curr_col+col-1) = img.col
+         then aux (x, y) row (col+1)
+    (* Imperative like?? *)
+    else aux ((x + (img.body.(curr_row-1+row).(curr_col-1+col).blue * sobel_x.(row).(col))),
+              (y + (img.body.(curr_row-1+row).(curr_col-1+col).blue * sobel_y.(row).(col)))) row (col+1) 
+  in
+  aux (0, 0) 0 0
+
+
+let sobel img =
+  let fix_operator_value (x, y) =
+    let operator = sqrt(float_of_int ((x*x) + (y*y))) 
+    in
+    if operator > float_of_int img.max_value then img.max_value
+    else int_of_float operator
+  in
+  let fill_px row col sobel_tuple =
+    let value = fix_operator_value sobel_tuple 
+    in
+    img.body.(row).(col).red <- value;
+    img.body.(row).(col).green <- value;
+    img.body.(row).(col).blue <- value;
+    ()
+  in
+  let rec aux row col =
+    if row = img.row then ()
+    else if col = img.col then aux (row+1) 0
+    else fill_px row col (vertical_horizontal_kernel ~img ~curr_row:row ~curr_col:col) |> fun () -> aux row (col+1) 
+  in
+  aux 0 0
+;;
+(**************************************************************************************************)

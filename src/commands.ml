@@ -27,14 +27,17 @@ let parse_entry img = function
                     fun () -> Filters.threshold img |>
                     fun () -> Image.write_image ~img: img ~output_file: "threshold.ppm"
   | Borders -> Filters.gray_scale img |> 
-                    fun () -> Filters.threshold img |>
-                    fun () -> Filters.bordering img |>
-                    fun () -> Image.write_image ~img: img ~output_file: "border.ppm"
-  | Sobel -> Printf.printf "Border Detection with Sobel!\n"
+               fun () -> Filters.threshold img |>
+               fun () -> Filters.bordering img |>
+               fun () -> Image.write_image ~img: img ~output_file: "border.ppm"
+  | Sobel -> Filters.gray_scale img |> 
+             fun () -> Filters.gray_scale img |>
+             fun () -> Filters.sobel img |>
+             fun () -> Image.write_image ~img: img ~output_file: "sobel.ppm"
   | Blurring -> Filters.blurring img |>
                 fun () -> Image.write_image ~img: img ~output_file: "blur.ppm"
   | Gauss -> Filters.gauss img |>
-                fun () -> Image.write_image ~img: img ~output_file: "gauss.ppm"
+             fun () -> Image.write_image ~img: img ~output_file: "gauss.ppm"
   | Sharpening -> Filters.sharpening img |>
                   fun () -> Image.write_image ~img: img ~output_file: "sharp.ppm"
   | Rotate -> Printf.printf "Rotate Image!\n"

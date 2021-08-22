@@ -51,4 +51,3 @@ module Gauss : Kernel = struct
       in
       aux (0, 0, 0) 0 0
 end
-

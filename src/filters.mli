@@ -32,3 +32,9 @@ val bordering : image -> unit
 
 (* Gauss Blurring *)
 val gauss : image -> unit
+
+(* Sobel Operator *)
+val vertical_horizontal_kernel : img:image -> curr_row:int -> curr_col:int -> (int * int)
+
+val sobel : image -> unit
+
