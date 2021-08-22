@@ -1,31 +1,22 @@
-# Projeto de processamento de imagem - ITP 2019.1
+# Image processing program for training OCaml
 
-## Desenvolvido por:
+## Developed by:
 
 * [Tiago Onofre Araujo](https://github.com/OnofreTZK)
-* [Vitoria Deon](https://github.com/vickydeon)
 
-### Funcionalidades obrigatórias
-   Funcionalidade | Status
+### Functional Requirements
+   Function | Status
    ------------ | -------------
-   Ler e criar Imagem | Completo
-   Menu de Comandos | Completo
-   Escala de cinza | Completo
-   Arquivos diferentes para cada processo | Completo
-   Binarização | Completo
-   Rotacionar  | Completo 
-   Ampliar | Completo
-   Reduzir | Completo
-   Filtros | Completo
-   Detecção de bordas | Completo
-
-
-### Extras implementados
-
-    1. Espelhamento da imagem na horizontal
-    1. Espelhamento da imagem na vertical
-    1. Filtro Gaussiano 5x5 em 256 partes
-    1. Detecção de bordas usando o operador de Sobel
+   Read Image | Complete
+   Write Image | Complete
+   Menu | Complete
+   Gray Scale | Complete
+   Binarization | Complete
+   Rotation  | TODO 
+   Enlarge| TODO
+   Reduce | TODO
+   Filters | Complete
+   Border Detection | Incomplete
 
 ### O que poderia ter sido feito diferente
 
