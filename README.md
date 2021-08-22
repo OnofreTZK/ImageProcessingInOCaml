@@ -33,7 +33,7 @@ $ esy
 
 ##### Exec:
 ```bash
-$ esy dune exec imageproc.exec <ppm_file>
+$ esy dune exec imageproc.exe <ppm_file>
 ```
 
 ### Referências que auxiliaram no desenvolvimento
