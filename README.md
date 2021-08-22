@@ -29,6 +29,7 @@
 ```bash
 # build the project with esy
 $ esy
+```
 
 ##### Exec:
 ```bash
